@@ -1,7 +1,9 @@
 sudo: required
 
+before_install: sudo apt-get install libssl-dev
+
 language: cpp
 
 compiler: gcc
 
-script: cd build/ && ./examples && make test
+script: cd openssl-example/build/ && ./examples && make test
