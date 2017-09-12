@@ -1,9 +1,18 @@
-sudo: required
+sudo:
+  -required
 
-before_install: sudo apt-get install libssl-dev
+language:
+  -cpp
 
-language: cpp
+compiler:
+  -gcc
 
-compiler: gcc
-
-script: cd openssl-example/build/ && ./examples && make test
+script:
+  - sudo docker run -it -v "$PWD:/repository" debian:testing sh -c "
+      apt-get update &&
+      apt-get install --yes g\+\+ libssl-dev cmake &&
+      cd /repository && mkdir build && cd build &&
+      cmake -DCMAKE_CXX_FLAGS=-Werror .. &&
+      make &&
+      CTEST_OUTPUT_ON_FAILURE=1 make test
+    "
