@@ -33,7 +33,7 @@ int main() {
   
   char table[3];
   
-  for (int i = 'A'; i <= 'z'; i++) {
+  for (int i = 'Q'; i <= 'z'; i++) {
     for (int j = 'A'; j <= 'z'; j++) {
       for (int k = 'A'; k <= 'z'; k++) {
         table[0] = char(i);
